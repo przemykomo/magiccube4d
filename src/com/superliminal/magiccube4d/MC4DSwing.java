@@ -57,9 +57,9 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
-import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.JSplitPane;
 import javax.swing.SpringLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -958,8 +958,8 @@ public class MC4DSwing extends JFrame {
                 // so that the text will be copyable.
                 JTextArea textArea = new JTextArea(
                     puzzleManager.puzzleDescription.getSchlafliProduct() + " " + puzzleManager.puzzleDescription.getLengthString() + "\n\n"
-                        + puzzleManager.puzzleDescription.getTopologicalFingerprintHumanReadable() + "\n\n"
-                        + "fingerprint: " + puzzleManager.puzzleDescription.getTopologicalFingerprintDigest());
+                  + puzzleManager.puzzleDescription.getTopologicalFingerprintHumanReadable() + "\n\n"
+                  + "fingerprint: " + puzzleManager.puzzleDescription.getTopologicalFingerprintDigest());
                 textArea.setEditable(false);
                 JOptionPane pane = new JOptionPane(textArea, JOptionPane.INFORMATION_MESSAGE);
                 JDialog dialog = pane.createDialog(MC4DSwing.this, puzzleManager.puzzleDescription.getSchlafliProduct() + " " + puzzleManager.puzzleDescription.getLengthString());
