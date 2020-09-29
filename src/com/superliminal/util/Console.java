@@ -66,10 +66,10 @@ public class Console {
 
     private static Component makePuzzle() {
         final String SCHLAFLI = "{3,3,3}";
-        final String LENGTHSTRING = "3";
+        final double LENGTH = 3.;
         final int[] num_twists = new int[1];
         System.out.println("version " + System.getProperty("java.version"));
-        final MC4DView view = new MC4DView(new PuzzleManager(SCHLAFLI, LENGTHSTRING, new JProgressBar()), new RotationHandler());
+        final MC4DView view = new MC4DView(new PuzzleManager(SCHLAFLI, LENGTH, new JProgressBar()), new RotationHandler());
         view.addStickerListener(new MC4DView.StickerListener() {
             @Override
             public void stickerClicked(InputEvent e, MagicCube.TwistData twisted) {
