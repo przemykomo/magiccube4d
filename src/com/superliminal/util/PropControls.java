@@ -40,8 +40,6 @@ public class PropControls {
                     //System.out.println(propname + ": " + (float)getFloatValue());
                 }
             });
-            // Currently only 1-way binding,
-            // since 2-way-binding an inexact control is hard to get right.
         }
     }
 
@@ -49,7 +47,7 @@ public class PropControls {
      * A JCheckBox that synchronizes it's value with a given property.
      */
     public static class PropCheckBox extends JCheckBox {
-        public PropCheckBox(String title, final String propname, final boolean dflt, final Component dependent, String tooltip) {
+        public PropCheckBox(String title, final String propname, boolean dflt, final Component dependent, String tooltip) {
             super(title, PropertyManager.getBoolean(propname, dflt));
             setToolTipText(tooltip);
             addActionListener(new ActionListener() {
@@ -58,12 +56,6 @@ public class PropControls {
                     PropertyManager.userprefs.setProperty(propname, "" + isSelected());
                 }
             });
-            PropertyManager.top.addPropertyListener(new PropertyManager.PropertyListener() {
-                @Override
-                public void propertyChanged(String property, String newval) {
-                    setSelected(PropertyManager.getBoolean(propname, dflt));
-                }
-            }, propname);
         }
     }
 
@@ -71,7 +63,7 @@ public class PropControls {
      * A JRadioButton that synchronizes it's value with a given property.
      */
     public static class PropRadioButton extends JRadioButton {
-        public PropRadioButton(String title, final String propname, final boolean dflt, final boolean invert, final Component dependent, String tooltip) {
+        public PropRadioButton(String title, final String propname, boolean dflt, final boolean invert, final Component dependent, String tooltip) {
             super(title);
             setToolTipText(tooltip);
             boolean on = PropertyManager.getBoolean(propname, dflt);
@@ -88,15 +80,6 @@ public class PropControls {
                     dependent.repaint();
                 }
             });
-            PropertyManager.top.addPropertyListener(new PropertyManager.PropertyListener() {
-                @Override
-                public void propertyChanged(String property, String newval) {
-                    boolean on = PropertyManager.getBoolean(propname, dflt);
-                    if(invert)
-                        on = !on;
-                    setSelected(on);
-                }
-            }, propname);
         }
     }
 
